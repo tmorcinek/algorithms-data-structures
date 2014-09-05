@@ -2,6 +2,7 @@ package com.morcinek.training.sorting;
 
 import com.morcinek.training.sorting.implementations.BubleSort;
 import com.morcinek.training.sorting.implementations.InsertionSort;
+import com.morcinek.training.sorting.implementations.QuickSort;
 import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +10,7 @@ import org.junit.Test;
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
-public class SortingTest {
+public class IntegerSortingTest {
 
     private static Sorter sorter = new Sorter();
 
@@ -34,4 +35,9 @@ public class SortingTest {
         Assertions.assertThat(randomNumbers).isEqualTo(sortedArray);
     }
 
+    @Test
+    public void quickSortTest() throws Exception {
+        sorter.sort(randomNumbers, new QuickSort<Integer>());
+        Assertions.assertThat(randomNumbers).isEqualTo(sortedArray);
+    }
 }
