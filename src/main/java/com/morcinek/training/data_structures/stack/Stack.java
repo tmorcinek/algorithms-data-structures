@@ -18,8 +18,7 @@ public class Stack<T> {
     }
 
     public void push(T i) {
-        array[size] = i;
-        size++;
+        addElement(i);
     }
 
     public T pop() {
@@ -29,5 +28,19 @@ public class Stack<T> {
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new EmptyStackException();
         }
+    }
+
+    private void addElement(T i) {
+        array[size] = i;
+        size++;
+        if (size == array.length) {
+            extendArray();
+        }
+    }
+
+    private void extendArray() {
+        Object[] newArray = new Object[size * 2];
+        System.arraycopy(array, 0, newArray, 0, size);
+        array = newArray;
     }
 }

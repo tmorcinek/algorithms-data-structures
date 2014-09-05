@@ -72,4 +72,12 @@ public class StackTest {
         Assertions.assertThat(stack.pop()).isEqualTo(1);
         Assertions.assertThat(stack.isEmpty()).isTrue();
     }
+
+    @Test
+    public void stackPushTest() throws Exception {
+        for (int i = 0; i < 21 ; i++) {
+            stack.push(1);
+        }
+        Assertions.assertThat(stack.isEmpty()).isFalse();
+    }
 }
