@@ -9,15 +9,21 @@ import org.junit.Test;
  */
 public class StackTest {
 
-    private Stack stack;
+    private Stack<Integer> stack;
 
     @Before
     public void setUp() throws Exception {
-        stack = new Stack();
+        stack = new Stack<Integer>();
     }
 
     @Test
     public void stackEmptyTest() throws Exception {
         Assertions.assertThat(stack.isEmpty()).isTrue();
+    }
+
+    @Test
+    public void stackNotEmptyTest() throws Exception {
+        stack.push(1);
+        Assertions.assertThat(stack.isEmpty()).isFalse();
     }
 }

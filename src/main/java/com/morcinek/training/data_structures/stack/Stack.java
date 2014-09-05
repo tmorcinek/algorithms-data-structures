@@ -3,9 +3,19 @@ package com.morcinek.training.data_structures.stack;
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
-public class Stack {
+public class Stack<T> {
+
+    public static final int ARRAY_INITIAL_SIZE = 20;
+
+    private Object[] array = new Object[ARRAY_INITIAL_SIZE];
+
+    private int size;
 
     public boolean isEmpty() {
-        return true;
+        return size == 0;
+    }
+
+    public void push(T i) {
+        size++;
     }
 }
