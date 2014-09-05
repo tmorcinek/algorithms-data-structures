@@ -16,10 +16,12 @@ public class Stack<T> {
     }
 
     public void push(T i) {
+        array[size] = i;
         size++;
     }
 
-    public void pop() {
+    public T pop() {
         size--;
+        return (T) array[size];
     }
 }
