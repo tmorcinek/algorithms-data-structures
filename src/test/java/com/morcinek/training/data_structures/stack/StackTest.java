@@ -1,6 +1,7 @@
 package com.morcinek.training.data_structures.stack;
 
 import org.fest.assertions.Assertions;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -8,7 +9,12 @@ import org.junit.Test;
  */
 public class StackTest {
 
-    private Stack stack = new Stack();
+    private Stack stack;
+
+    @Before
+    public void setUp() throws Exception {
+        stack = new Stack();
+    }
 
     @Test
     public void stackEmptyTest() throws Exception {
