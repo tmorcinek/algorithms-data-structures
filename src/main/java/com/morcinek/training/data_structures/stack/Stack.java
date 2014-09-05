@@ -1,5 +1,7 @@
 package com.morcinek.training.data_structures.stack;
 
+import java.util.EmptyStackException;
+
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
@@ -22,6 +24,10 @@ public class Stack<T> {
 
     public T pop() {
         size--;
-        return (T) array[size];
+        try {
+            return (T) array[size];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new EmptyStackException();
+        }
     }
 }

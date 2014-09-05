@@ -4,6 +4,8 @@ import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.EmptyStackException;
+
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
@@ -32,6 +34,13 @@ public class StackTest {
         stack.push(1);
         stack.pop();
         Assertions.assertThat(stack.isEmpty()).isTrue();
+    }
+
+    @Test (expected = EmptyStackException.class)
+    public void emptyStackExceptionTest() throws Exception {
+        stack.push(1);
+        stack.pop();
+        stack.pop();
     }
 
     @Test
