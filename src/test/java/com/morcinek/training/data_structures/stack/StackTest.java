@@ -26,4 +26,11 @@ public class StackTest {
         stack.push(1);
         Assertions.assertThat(stack.isEmpty()).isFalse();
     }
+
+    @Test
+    public void stackPopTest() throws Exception {
+        stack.push(1);
+        stack.pop();
+        Assertions.assertThat(stack.isEmpty()).isTrue();
+    }
 }

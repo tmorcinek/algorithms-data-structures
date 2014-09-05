@@ -18,4 +18,8 @@ public class Stack<T> {
     public void push(T i) {
         size++;
     }
+
+    public void pop() {
+        size--;
+    }
 }
