@@ -3,7 +3,7 @@ package com.morcinek.training.sorting;
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
-public interface SortMethod {
+public interface SortMethod <T extends Comparable<T>>{
 
-    public <T extends Comparable<T>> void sort(T[] array);
+    public  void sort(T[] array);
 }

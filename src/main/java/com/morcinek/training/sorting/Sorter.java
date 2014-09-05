@@ -5,7 +5,7 @@ package com.morcinek.training.sorting;
  */
 public class Sorter {
 
-    public <T extends Comparable<T>> void sort(T[] array, SortMethod sortMethod){
+    public <T extends Comparable<T>> void sort(T[] array, SortMethod<T> sortMethod) {
         sortMethod.sort(array);
     }
 }
