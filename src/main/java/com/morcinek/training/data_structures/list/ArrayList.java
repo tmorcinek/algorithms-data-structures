@@ -68,6 +68,7 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public T delete(int index) {
+        checkIndex(index);
         T object = null;
         if (index < size) {
             object = (T) array[index];

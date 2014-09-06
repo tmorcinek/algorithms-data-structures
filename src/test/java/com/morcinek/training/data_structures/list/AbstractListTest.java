@@ -118,10 +118,9 @@ public abstract class AbstractListTest {
         Assertions.assertThat(list.search(21)).isEqualTo(-1);
     }
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void deleteFirstElementInEmptyListTest() throws Exception {
-        Integer delete = list.delete(0);
-        Assertions.assertThat(delete).isNull();
+        list.delete(0);
     }
 
     @Test
@@ -162,12 +161,10 @@ public abstract class AbstractListTest {
         Assertions.assertThat(list.size()).isEqualTo(3);
     }
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void deleteOverLastElementTest() throws Exception {
         list.insert(14);
         list.insert(26);
-        Integer delete = list.delete(3);
-        Assertions.assertThat(delete).isNull();
-        Assertions.assertThat(list.size()).isEqualTo(2);
+        list.delete(3);
     }
 }
