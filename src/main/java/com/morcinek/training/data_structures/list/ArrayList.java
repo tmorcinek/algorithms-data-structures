@@ -20,6 +20,15 @@ public class ArrayList<T> implements List<T> {
     public void insert(T object) {
         array[size] = object;
         size++;
+        if (size == array.length) {
+            extendArray();
+        }
+    }
+
+    private void extendArray() {
+        Object[] newArray = new Object[size * 2];
+        System.arraycopy(array, 0, newArray, 0, size);
+        array = newArray;
     }
 
     @Override

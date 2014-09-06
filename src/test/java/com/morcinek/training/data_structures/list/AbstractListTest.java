@@ -31,10 +31,10 @@ public abstract class AbstractListTest {
 
     @Test
     public void stackWithTenValuesTest() throws Exception {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 21; i++) {
             list.insert(i);
         }
-        Assertions.assertThat(list.size()).isEqualTo(10);
+        Assertions.assertThat(list.size()).isEqualTo(21);
     }
 
     @Test
