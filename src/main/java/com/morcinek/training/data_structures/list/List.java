@@ -7,7 +7,6 @@ package com.morcinek.training.data_structures.list;
  * - insert(T)
  * - get(int)
  * - search(T)
- * - delete(T)
  * - delete(int)
  */
 public interface List<T> {

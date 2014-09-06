@@ -80,9 +80,16 @@ public class LinkedList<T> implements List<T> {
     @Override
     public T delete(int index) {
         try {
-            T value = rootNode.value;
-            rootNode = rootNode.nextNode;
-            return value;
+            if (index == 0) {
+                T value = rootNode.value;
+                rootNode = rootNode.nextNode;
+                return value;
+            } else {
+                Node node = nodeWithIndex(index-1);
+                T value = node.nextNode.value;
+                node.nextNode = node.nextNode.nextNode;
+                return value;
+            }
         } catch (NullPointerException e) {
             return null;
         }
