@@ -38,6 +38,14 @@ public class LinkedList<T> implements List<T> {
         }
     }
 
+    private Node getLastNode() {
+        Node currentNode = rootNode;
+        while (currentNode.nextNode != null) {
+            currentNode = currentNode.nextNode;
+        }
+        return currentNode;
+    }
+
     @Override
     public T get(int index) {
         try {
@@ -51,11 +59,17 @@ public class LinkedList<T> implements List<T> {
         }
     }
 
-    private Node getLastNode() {
+    @Override
+    public int search(T object) {
         Node currentNode = rootNode;
-        while (currentNode.nextNode != null) {
+        int i = 0;
+        while (currentNode != null) {
+            if (currentNode.value.equals(object)) {
+                return i;
+            }
             currentNode = currentNode.nextNode;
+            i++;
         }
-        return currentNode;
+        return -1;
     }
 }

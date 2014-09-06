@@ -59,4 +59,23 @@ public class ListTest {
     public void getValuesFromEmptyListTest() throws Exception {
         Assertions.assertThat(list.get(0)).isNull();
     }
+
+    @Test
+    public void searchValueTest() throws Exception {
+        list.insert(14);
+        list.insert(26);
+        list.insert(198);
+        Assertions.assertThat(list.search(14)).isEqualTo(0);
+        Assertions.assertThat(list.search(26)).isEqualTo(1);
+        Assertions.assertThat(list.search(198)).isEqualTo(2);
+        Assertions.assertThat(list.search(198)).isEqualTo(2);
+    }
+
+    @Test
+    public void searchNonExistingValueTest() throws Exception {
+        list.insert(14);
+        list.insert(26);
+        list.insert(198);
+        Assertions.assertThat(list.search(21)).isEqualTo(-1);
+    }
 }

@@ -17,4 +17,6 @@ public interface List<T> {
     void insert(T object);
 
     T get(int index);
+
+    int search(T object);
 }
