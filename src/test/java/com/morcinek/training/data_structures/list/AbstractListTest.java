@@ -38,6 +38,36 @@ public abstract class AbstractListTest {
     }
 
     @Test
+    public void insertAtIndexTest() throws Exception {
+        for (int i = 0; i < 10; i++) {
+            list.insert(i);
+        }
+        list.insert(99, 9);
+        list.insert(99, 5);
+        Assertions.assertThat(list.get(5)).isEqualTo(99);
+        Assertions.assertThat(list.get(10)).isEqualTo(99);
+        Assertions.assertThat(list.get(4)).isEqualTo(4);
+        Assertions.assertThat(list.get(6)).isEqualTo(5);
+        Assertions.assertThat(list.get(7)).isEqualTo(6);
+        Assertions.assertThat(list.get(11)).isEqualTo(9);
+        Assertions.assertThat(list.size()).isEqualTo(12);
+    }
+
+    @Test
+    public void insertAtTheEnd() throws Exception {
+        list.insert(55);
+        list.insert(99, 1);
+        Assertions.assertThat(list.size()).isEqualTo(2);
+        Assertions.assertThat(list.get(0)).isEqualTo(55);
+        Assertions.assertThat(list.get(1)).isEqualTo(99);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void insertAfterTheEnd() throws Exception {
+        list.insert(99, 1);
+    }
+
+    @Test
     public void getValuesTest() throws Exception {
         for (int i = 0; i < 10; i++) {
             list.insert(i);
@@ -54,12 +84,19 @@ public abstract class AbstractListTest {
         Assertions.assertThat(list.get(0)).isEqualTo(14);
         Assertions.assertThat(list.get(1)).isEqualTo(26);
         Assertions.assertThat(list.get(2)).isEqualTo(198);
-        Assertions.assertThat(list.get(3)).isNull();
     }
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     public void getValuesFromEmptyListTest() throws Exception {
         Assertions.assertThat(list.get(0)).isNull();
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void getValueAboveRangeTest() throws Exception {
+        list.insert(14);
+        list.insert(26);
+        list.insert(198);
+        Assertions.assertThat(list.get(7)).isNull();
     }
 
     @Test

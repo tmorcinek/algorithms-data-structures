@@ -94,4 +94,9 @@ public class LinkedList<T> implements List<T> {
             return null;
         }
     }
+
+    @Override
+    public void insert(T object, int index) {
+
+    }
 }

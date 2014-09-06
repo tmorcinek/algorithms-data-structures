@@ -20,12 +20,31 @@ public class ArrayList<T> implements List<T> {
     public void insert(T object) {
         array[size] = object;
         size++;
-        if (size == array.length) {
-            extendArray();
+        increaseCapacityIfNeeded();
+    }
+
+    @Override
+    public void insert(T object, int index) {
+        checkIndex(index - 1);
+        size++;
+        increaseCapacityIfNeeded();
+        System.arraycopy(array, index, array, index + 1, size - index);
+        array[index] = object;
+    }
+
+    private void checkIndex(int index) {
+        if (index >= size || index < 0) {
+            throw new IndexOutOfBoundsException();
         }
     }
 
-    private void extendArray() {
+    private void increaseCapacityIfNeeded() {
+        if (size == array.length) {
+            increaseCapacity();
+        }
+    }
+
+    private void increaseCapacity() {
         Object[] newArray = new Object[size * 2];
         System.arraycopy(array, 0, newArray, 0, size);
         array = newArray;
@@ -33,6 +52,7 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public T get(int index) {
+        checkIndex(index);
         return (T) array[index];
     }
 
