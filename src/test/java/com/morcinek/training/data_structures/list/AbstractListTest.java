@@ -7,13 +7,15 @@ import org.junit.Test;
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
-public class ListTest {
+public abstract class AbstractListTest {
 
     private List<Integer> list;
 
+    protected abstract List<Integer> createList();
+
     @Before
-    public void setUp() throws Exception {
-        list = new LinkedList<Integer>();
+    public void setUpLinkedList() throws Exception {
+        list = createList();
     }
 
     @Test
