@@ -40,7 +40,14 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public void insert(T object, int index) {
-
+        try {
+            Node parentNode = nodeWithIndex(index - 1);
+            Node nextNode = parentNode.nextNode;
+            parentNode.nextNode = new Node(object);
+            parentNode.nextNode.nextNode = nextNode;
+        } catch (NullPointerException e) {
+            throw new IndexOutOfBoundsException();
+        }
     }
 
     private Node getLastNode() {
@@ -90,7 +97,7 @@ public class LinkedList<T> implements List<T> {
                 rootNode = rootNode.nextNode;
                 return value;
             } else {
-                Node node = nodeWithIndex(index-1);
+                Node node = nodeWithIndex(index - 1);
                 T value = node.nextNode.value;
                 node.nextNode = node.nextNode.nextNode;
                 return value;
