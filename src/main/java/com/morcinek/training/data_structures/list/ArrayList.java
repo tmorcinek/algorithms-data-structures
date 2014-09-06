@@ -5,14 +5,16 @@ package com.morcinek.training.data_structures.list;
  */
 public class ArrayList<T> implements List<T> {
 
+    private int size;
+
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public void insert(T object) {
-
+        size++;
     }
 
     @Override
