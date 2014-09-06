@@ -78,4 +78,21 @@ public class ListTest {
         list.insert(198);
         Assertions.assertThat(list.search(21)).isEqualTo(-1);
     }
+
+    @Test
+    public void deleteFirstElementInEmptyListTest() throws Exception {
+        Object delete = list.delete(0);
+        Assertions.assertThat(delete).isNull();
+    }
+
+    @Test
+    public void deleteFirstElementTest() throws Exception {
+        list.insert(14);
+        list.insert(26);
+        list.insert(198);
+        Object delete = list.delete(0);
+        Assertions.assertThat(delete).isEqualTo(14);
+        Assertions.assertThat(list.get(0)).isEqualTo(26);
+        Assertions.assertThat(list.get(1)).isEqualTo(198);
+    }
 }

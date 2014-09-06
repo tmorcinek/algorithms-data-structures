@@ -49,14 +49,18 @@ public class LinkedList<T> implements List<T> {
     @Override
     public T get(int index) {
         try {
-            Node currentNode = rootNode;
-            for (int i = 0; i < index; i++) {
-                currentNode = currentNode.nextNode;
-            }
-            return currentNode.value;
+            return nodeWithIndex(index).value;
         } catch (NullPointerException e) {
             return null;
         }
+    }
+
+    private Node nodeWithIndex(int index) {
+        Node currentNode = rootNode;
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.nextNode;
+        }
+        return currentNode;
     }
 
     @Override
@@ -71,5 +75,16 @@ public class LinkedList<T> implements List<T> {
             i++;
         }
         return -1;
+    }
+
+    @Override
+    public T delete(int index) {
+        try {
+            T value = rootNode.value;
+            rootNode = rootNode.nextNode;
+            return value;
+        } catch (NullPointerException e) {
+            return null;
+        }
     }
 }

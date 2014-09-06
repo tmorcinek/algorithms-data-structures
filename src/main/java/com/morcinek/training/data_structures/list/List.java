@@ -19,4 +19,6 @@ public interface List<T> {
     T get(int index);
 
     int search(T object);
+
+    T delete(int index);
 }
