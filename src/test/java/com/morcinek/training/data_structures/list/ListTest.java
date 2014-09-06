@@ -26,4 +26,12 @@ public class ListTest {
         list.insert(0);
         Assertions.assertThat(list.size()).isEqualTo(1);
     }
+
+    @Test
+    public void stackWithTenValuesTest() throws Exception {
+        for (int i = 0; i < 10; i++) {
+            list.insert(i);
+        }
+        Assertions.assertThat(list.size()).isEqualTo(10);
+    }
 }
