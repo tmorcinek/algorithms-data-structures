@@ -52,5 +52,11 @@ public class ListTest {
         Assertions.assertThat(list.get(0)).isEqualTo(14);
         Assertions.assertThat(list.get(1)).isEqualTo(26);
         Assertions.assertThat(list.get(2)).isEqualTo(198);
+        Assertions.assertThat(list.get(3)).isNull();
+    }
+
+    @Test
+    public void getValuesFromEmptyListTest() throws Exception {
+        Assertions.assertThat(list.get(0)).isNull();
     }
 }

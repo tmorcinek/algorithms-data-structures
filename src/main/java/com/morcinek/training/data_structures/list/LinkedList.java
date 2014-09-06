@@ -40,11 +40,15 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        Node currentNode = rootNode;
-        for (int i = 0; i < index; i++) {
-            currentNode = currentNode.nextNode;
+        try {
+            Node currentNode = rootNode;
+            for (int i = 0; i < index; i++) {
+                currentNode = currentNode.nextNode;
+            }
+            return currentNode.value;
+        } catch (NullPointerException e) {
+            return null;
         }
-        return currentNode.value;
     }
 
     private Node getLastNode() {

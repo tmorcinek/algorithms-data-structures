@@ -4,9 +4,9 @@ package com.morcinek.training.data_structures.list;
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  * Needs to have methods:
  * - size()
+ * - insert(T)
  * - get(int)
  * - search(T)
- * - insert(T)
  * - delete(T)
  * - delete(int)
  */
