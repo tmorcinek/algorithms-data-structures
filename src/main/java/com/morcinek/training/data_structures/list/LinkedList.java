@@ -38,6 +38,11 @@ public class LinkedList<T> implements List<T> {
         }
     }
 
+    @Override
+    public void insert(T object, int index) {
+
+    }
+
     private Node getLastNode() {
         Node currentNode = rootNode;
         while (currentNode.nextNode != null) {
@@ -51,7 +56,7 @@ public class LinkedList<T> implements List<T> {
         try {
             return nodeWithIndex(index).value;
         } catch (NullPointerException e) {
-            return null;
+            throw new IndexOutOfBoundsException();
         }
     }
 
@@ -91,12 +96,7 @@ public class LinkedList<T> implements List<T> {
                 return value;
             }
         } catch (NullPointerException e) {
-            return null;
+            throw new IndexOutOfBoundsException();
         }
-    }
-
-    @Override
-    public void insert(T object, int index) {
-
     }
 }
