@@ -34,4 +34,23 @@ public class ListTest {
         }
         Assertions.assertThat(list.size()).isEqualTo(10);
     }
+
+    @Test
+    public void getValuesTest() throws Exception {
+        for (int i = 0; i < 10; i++) {
+            list.insert(i);
+        }
+        Assertions.assertThat(list.get(9)).isEqualTo(9);
+        Assertions.assertThat(list.get(3)).isEqualTo(3);
+    }
+
+    @Test
+    public void getValuesSimpleTest() throws Exception {
+        list.insert(14);
+        list.insert(26);
+        list.insert(198);
+        Assertions.assertThat(list.get(0)).isEqualTo(14);
+        Assertions.assertThat(list.get(1)).isEqualTo(26);
+        Assertions.assertThat(list.get(2)).isEqualTo(198);
+    }
 }

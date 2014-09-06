@@ -15,4 +15,6 @@ public interface List<T> {
     int size();
 
     void insert(T object);
+
+    T get(int index);
 }

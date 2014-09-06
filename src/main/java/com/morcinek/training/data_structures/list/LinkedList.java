@@ -38,6 +38,15 @@ public class LinkedList<T> implements List<T> {
         }
     }
 
+    @Override
+    public T get(int index) {
+        Node currentNode = rootNode;
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.nextNode;
+        }
+        return currentNode.value;
+    }
+
     private Node getLastNode() {
         Node currentNode = rootNode;
         while (currentNode.nextNode != null) {
