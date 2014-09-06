@@ -13,4 +13,6 @@ package com.morcinek.training.data_structures.list;
 public interface List<T> {
 
     int size();
+
+    void insert(T object);
 }

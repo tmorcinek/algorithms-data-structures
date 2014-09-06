@@ -13,11 +13,17 @@ public class ListTest {
 
     @Before
     public void setUp() throws Exception {
-        list = new LinkedList();
+        list = new LinkedList<Integer>();
     }
 
     @Test
     public void stackEmptyTest() throws Exception {
         Assertions.assertThat(list.size()).isEqualTo(0);
+    }
+
+    @Test
+    public void stackNotEmptyTest() throws Exception {
+        list.insert(0);
+        Assertions.assertThat(list.size()).isEqualTo(1);
     }
 }
