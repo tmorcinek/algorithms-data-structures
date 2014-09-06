@@ -96,6 +96,8 @@ public abstract class AbstractListTest {
         Assertions.assertThat(delete).isEqualTo(14);
         Assertions.assertThat(list.get(0)).isEqualTo(26);
         Assertions.assertThat(list.get(1)).isEqualTo(198);
+        Assertions.assertThat(list.size()).isEqualTo(2);
+
     }
 
     @Test
@@ -109,6 +111,7 @@ public abstract class AbstractListTest {
         Assertions.assertThat(list.get(0)).isEqualTo(14);
         Assertions.assertThat(list.get(1)).isEqualTo(26);
         Assertions.assertThat(list.get(2)).isEqualTo(56);
+        Assertions.assertThat(list.size()).isEqualTo(3);
     }
 
     @Test
