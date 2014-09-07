@@ -1,6 +1,5 @@
 package com.morcinek.training.data_structures.tree;
 
-import com.morcinek.training.data_structures.tree.linked.RecursiveLinkedTree;
 import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +28,7 @@ public abstract class TreeTest {
         return rootNode;
     }
 
-    protected abstract RecursiveLinkedTree<Integer> createLinkedTree(Node<Integer> rootNode);
+    protected abstract Tree<Integer> createLinkedTree(Node<Integer> rootNode);
 
     @Before
     public void setUp() throws Exception {
