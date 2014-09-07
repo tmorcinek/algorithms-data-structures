@@ -106,4 +106,9 @@ public class LinkedList<T> implements List<T> {
             throw new IndexOutOfBoundsException();
         }
     }
+
+    @Override
+    public Object[] toArray() {
+        return null;
+    }
 }

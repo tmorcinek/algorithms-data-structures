@@ -1,5 +1,7 @@
 package com.morcinek.training.data_structures.list;
 
+import java.util.Arrays;
+
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  * Needs to have methods:
@@ -23,4 +25,6 @@ public interface List<T> {
     int search(T object);
 
     T delete(int index);
+
+    public Object[] toArray();
 }

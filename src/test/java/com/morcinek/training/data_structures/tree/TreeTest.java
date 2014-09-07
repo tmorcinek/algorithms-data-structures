@@ -1,17 +1,20 @@
 package com.morcinek.training.data_structures.tree;
 
+import org.fest.assertions.Assertions;
 import org.junit.Before;
+import org.junit.Test;
+
+import java.util.Arrays;
 
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
 public class TreeTest {
 
-    private Node<Integer> rootNode;
+    private Tree<Integer> tree;
 
-    @Before
-    public void setUp() throws Exception {
-        rootNode = new Node<Integer>(18);
+    private Node<Integer> createRootNode() {
+        Node<Integer> rootNode = new Node<Integer>(18);
         Node<Integer> leftNode = new Node<Integer>(12);
         leftNode.setLeftNode(new Node<Integer>(7));
         Node<Integer> lastNode = new Node<Integer>(4);
@@ -22,5 +25,18 @@ public class TreeTest {
         rightNode.setLeftNode(new Node<Integer>(2));
         rightNode.setRightNode(new Node<Integer>(21));
         rootNode.setRightNode(rightNode);
+        return rootNode;
+    }
+
+    @Before
+    public void setUp() throws Exception {
+        tree = new Tree<Integer>(createRootNode());
+    }
+
+    @Test
+    public void getValuesTest() throws Exception {
+        Object[] allValues = tree.getAllValues();
+        Arrays.sort(allValues);
+        Assertions.assertThat(allValues).isEqualTo(new Object[]{2, 4, 5, 7, 10, 12, 18, 21});
     }
 }

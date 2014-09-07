@@ -1,5 +1,7 @@
 package com.morcinek.training.data_structures.list;
 
+import java.util.Arrays;
+
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
@@ -76,5 +78,10 @@ public class ArrayList<T> implements List<T> {
             size--;
         }
         return object;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return Arrays.copyOf(array, size);
     }
 }

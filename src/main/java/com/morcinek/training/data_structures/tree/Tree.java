@@ -1,13 +1,32 @@
 package com.morcinek.training.data_structures.tree;
 
+import com.morcinek.training.data_structures.list.ArrayList;
+import com.morcinek.training.data_structures.list.List;
+
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
 public class Tree<T> {
 
-    private Node rootNode;
+    private Node<T> rootNode;
 
-    public Tree(Node rootNode) {
+    public Tree(Node<T> rootNode) {
         this.rootNode = rootNode;
+    }
+
+    public Object[] getAllValues() {
+        List<T> list = new ArrayList<T>();
+        addNodeValues(list, rootNode);
+        return list.toArray();
+    }
+
+    private void addNodeValues(List<T> list, Node<T> rootNode) {
+        list.insert(rootNode.getValue());
+        if (rootNode.getLeftNode() != null) {
+            addNodeValues(list, rootNode.getLeftNode());
+        }
+        if (rootNode.getRightNode() != null) {
+            addNodeValues(list, rootNode.getRightNode());
+        }
     }
 }
