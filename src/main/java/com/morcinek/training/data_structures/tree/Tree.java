@@ -6,4 +6,6 @@ package com.morcinek.training.data_structures.tree;
 public interface Tree<T> {
 
     public Object[] getAllValues();
+
+    public int getTreeHeight();
 }

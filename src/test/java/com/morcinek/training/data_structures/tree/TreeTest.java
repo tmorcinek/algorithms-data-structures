@@ -41,4 +41,9 @@ public abstract class TreeTest {
         Arrays.sort(allValues);
         Assertions.assertThat(allValues).isEqualTo(new Object[]{2, 4, 5, 7, 10, 12, 18, 21});
     }
+
+    @Test
+    public void getHeightTest() throws Exception {
+        Assertions.assertThat(tree.getTreeHeight()).isEqualTo(4);
+    }
 }

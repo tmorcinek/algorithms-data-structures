@@ -38,4 +38,9 @@ public class LinkedTree<T> implements Tree<T> {
             }
         }
     }
+
+    @Override
+    public int getTreeHeight() {
+        return 0;
+    }
 }

@@ -32,4 +32,17 @@ public class RecursiveLinkedTree<T> implements Tree<T> {
             addNodeValues(list, rootNode.getRightNode());
         }
     }
+
+    @Override
+    public int getTreeHeight() {
+        return getNodeHeight(rootNode, 1);
+    }
+
+    private int getNodeHeight(Node<T> rootNode, int i) {
+        return Math.max(Math.max(i, getNodeHeightIfNotNull(i, rootNode.getLeftNode())), getNodeHeightIfNotNull(i, rootNode.getRightNode()));
+    }
+
+    private int getNodeHeightIfNotNull(int i, Node<T> leftNode) {
+        return leftNode != null ? getNodeHeight(leftNode, i + 1) : 0;
+    }
 }
