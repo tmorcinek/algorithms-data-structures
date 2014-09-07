@@ -73,6 +73,26 @@ public class LinkedTree<T extends Comparable<T>> implements Tree<T> {
 
     @Override
     public T getMaxValue() {
-        return null;
+        T maxValue = rootNode.getValue();
+        Stack<Node<T>> stack = new Stack<Node<T>>();
+        stack.push(rootNode);
+        while (!stack.isEmpty()) {
+            Node<T> node = stack.pop();
+            maxValue = getHigherValue(maxValue, node.getValue());
+            if (node.getLeftNode() != null) {
+                stack.push(node.getLeftNode());
+            }
+            if (node.getRightNode() != null) {
+                stack.push(node.getRightNode());
+            }
+        }
+        return maxValue;
+    }
+
+    private T getHigherValue(T maxValue, T value) {
+        if (value.compareTo(maxValue) > 0) {
+            return value;
+        }
+        return maxValue;
     }
 }
