@@ -30,7 +30,7 @@ public class TreeTest {
 
     @Before
     public void setUp() throws Exception {
-        tree = new Tree<Integer>(createRootNode());
+        tree = new LinkedTree<Integer>(createRootNode());
     }
 
     @Test
