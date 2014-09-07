@@ -9,7 +9,7 @@ import java.util.Arrays;
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
-public abstract class TreeTest {
+public abstract class AbstractTreeTest {
 
     private Tree<Integer> tree;
 
