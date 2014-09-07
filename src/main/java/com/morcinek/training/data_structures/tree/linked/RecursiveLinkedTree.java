@@ -1,16 +1,18 @@
-package com.morcinek.training.data_structures.tree;
+package com.morcinek.training.data_structures.tree.linked;
 
 import com.morcinek.training.data_structures.list.ArrayList;
 import com.morcinek.training.data_structures.list.List;
+import com.morcinek.training.data_structures.tree.Node;
+import com.morcinek.training.data_structures.tree.Tree;
 
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
-public class LinkedTree<T> implements Tree<T> {
+public class RecursiveLinkedTree<T> implements Tree<T> {
 
     private Node<T> rootNode;
 
-    public LinkedTree(Node<T> rootNode) {
+    public RecursiveLinkedTree(Node<T> rootNode) {
         this.rootNode = rootNode;
     }
 
