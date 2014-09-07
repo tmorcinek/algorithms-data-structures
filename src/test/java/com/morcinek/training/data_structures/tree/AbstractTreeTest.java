@@ -46,4 +46,9 @@ public abstract class AbstractTreeTest {
     public void getHeightTest() throws Exception {
         Assertions.assertThat(tree.getTreeHeight()).isEqualTo(4);
     }
+
+    @Test
+    public void getMaxValueTest() throws Exception {
+        Assertions.assertThat(tree.getMaxValue()).isEqualTo(21);
+    }
 }

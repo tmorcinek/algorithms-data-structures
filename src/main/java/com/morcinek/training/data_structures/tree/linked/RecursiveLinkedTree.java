@@ -5,10 +5,12 @@ import com.morcinek.training.data_structures.list.List;
 import com.morcinek.training.data_structures.tree.Node;
 import com.morcinek.training.data_structures.tree.Tree;
 
+import java.util.Comparator;
+
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
-public class RecursiveLinkedTree<T> implements Tree<T> {
+public class RecursiveLinkedTree<T extends Comparable<T>> implements Tree<T> {
 
     private Node<T> rootNode;
 
@@ -44,5 +46,26 @@ public class RecursiveLinkedTree<T> implements Tree<T> {
 
     private int getNodeHeightIfNotNull(int i, Node<T> leftNode) {
         return leftNode != null ? getNodeHeight(leftNode, i + 1) : 0;
+    }
+
+    @Override
+    public T getMaxValue() {
+        return getNodeMaxValue(rootNode);
+    }
+
+    private T getNodeMaxValue(Node<T> node) {
+        if (node == null) {
+            return null;
+        } else {
+            return getGreaterValue(getGreaterValue(node.getValue(), getNodeMaxValue(node.getLeftNode())), getNodeMaxValue(node.getRightNode()));
+        }
+    }
+
+    private T getGreaterValue(T value, T compareValue) {
+        if (compareValue == null || value.compareTo(compareValue) > 0) {
+            return value;
+        } else {
+            return compareValue;
+        }
     }
 }
