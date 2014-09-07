@@ -27,7 +27,7 @@ public class LinkedTree<T> implements Tree<T> {
     private void addNodeValues(List<T> list, Node<T> rootNode) {
         Stack<Node<T>> stack = new Stack<Node<T>>();
         stack.push(rootNode);
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             Node<T> node = stack.pop();
             list.insert(node.getValue());
             if (node.getLeftNode() != null) {
@@ -39,8 +39,33 @@ public class LinkedTree<T> implements Tree<T> {
         }
     }
 
+
+    private class NodeHeight {
+
+        private Node<T> node;
+        private int height;
+
+        private NodeHeight(Node<T> node, int height) {
+            this.node = node;
+            this.height = height;
+        }
+    }
+
     @Override
     public int getTreeHeight() {
-        return 0;
+        int maxHeight = 1;
+        Stack<NodeHeight> stack = new Stack<NodeHeight>();
+        stack.push(new NodeHeight(rootNode, maxHeight));
+        while (!stack.isEmpty()) {
+            NodeHeight nodeHeight = stack.pop();
+            if (nodeHeight.node.getLeftNode() != null) {
+                stack.push(new NodeHeight(nodeHeight.node.getLeftNode(), nodeHeight.height + 1));
+            }
+            if (nodeHeight.node.getRightNode() != null) {
+                stack.push(new NodeHeight(nodeHeight.node.getRightNode(), nodeHeight.height + 1));
+            }
+            maxHeight = Math.max(maxHeight, nodeHeight.height);
+        }
+        return maxHeight;
     }
 }
