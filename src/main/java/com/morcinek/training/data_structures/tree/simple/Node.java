@@ -1,4 +1,4 @@
-package com.morcinek.training.data_structures.tree;
+package com.morcinek.training.data_structures.tree.simple;
 
 public class Node<T> {
 

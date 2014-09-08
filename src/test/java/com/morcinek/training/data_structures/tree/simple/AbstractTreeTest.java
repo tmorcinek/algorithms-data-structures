@@ -1,4 +1,4 @@
-package com.morcinek.training.data_structures.tree;
+package com.morcinek.training.data_structures.tree.simple;
 
 import org.fest.assertions.Assertions;
 import org.junit.Before;

@@ -1,6 +1,4 @@
-package com.morcinek.training.data_structures.tree;
-
-import java.util.Comparator;
+package com.morcinek.training.data_structures.tree.simple;
 
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.

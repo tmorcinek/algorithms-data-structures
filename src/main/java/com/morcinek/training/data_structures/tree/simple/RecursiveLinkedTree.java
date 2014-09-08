@@ -1,11 +1,7 @@
-package com.morcinek.training.data_structures.tree.linked;
+package com.morcinek.training.data_structures.tree.simple;
 
 import com.morcinek.training.data_structures.list.ArrayList;
 import com.morcinek.training.data_structures.list.List;
-import com.morcinek.training.data_structures.tree.Node;
-import com.morcinek.training.data_structures.tree.Tree;
-
-import java.util.Comparator;
 
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
