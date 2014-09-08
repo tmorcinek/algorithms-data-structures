@@ -81,4 +81,13 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
         }
         return false;
     }
+
+    @Override
+    public T minimum() {
+        BSTNode node = root;
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node.value;
+    }
 }

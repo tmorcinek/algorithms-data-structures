@@ -55,6 +55,11 @@ public class BSTreeTest {
 
     @Test
     public void singleSearchTest() throws Exception {
-        Assertions.assertThat(tree.search(22)).isFalse();
+        Assertions.assertThat(tree.search(149)).isFalse();
+    }
+
+    @Test
+    public void minimumTest() throws Exception {
+        Assertions.assertThat(tree.minimum()).isEqualTo(1);
     }
 }
