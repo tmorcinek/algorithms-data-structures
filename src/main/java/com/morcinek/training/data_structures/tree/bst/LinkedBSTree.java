@@ -88,4 +88,13 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
         }
         return node.value;
     }
+
+    @Override
+    public T maximum() {
+        BSTNode node = root;
+        while (node.right != null) {
+            node = node.right;
+        }
+        return node.value;
+    }
 }

@@ -62,4 +62,25 @@ public class BSTreeTest {
     public void minimumTest() throws Exception {
         Assertions.assertThat(tree.minimum()).isEqualTo(1);
     }
+
+    @Test
+    public void minimumWithInsertionTest() throws Exception {
+        tree.insert(-1);
+        tree.insert(-15);
+        tree.insert(-159);
+        Assertions.assertThat(tree.minimum()).isEqualTo(-159);
+    }
+
+    @Test
+    public void maximumTest() throws Exception {
+        Assertions.assertThat(tree.maximum()).isEqualTo(21);
+    }
+
+    @Test
+    public void maximumWithInsertionTest() throws Exception {
+        tree.insert(30);
+        tree.insert(37);
+        tree.insert(157);
+        Assertions.assertThat(tree.maximum()).isEqualTo(157);
+    }
 }
