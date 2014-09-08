@@ -63,4 +63,22 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
             getInOrderValuesToList(list, node.right);
         }
     }
+
+    @Override
+    public boolean search(T value) {
+        return searchValue(value, root);
+    }
+
+    private boolean searchValue(T value, BSTNode node) {
+        if (node != null) {
+            if (value.compareTo(node.value) == 0) {
+                return true;
+            } else if (value.compareTo(node.value) > 0) {
+                return searchValue(value, node.right);
+            } else {
+                return searchValue(value, node.left);
+            }
+        }
+        return false;
+    }
 }

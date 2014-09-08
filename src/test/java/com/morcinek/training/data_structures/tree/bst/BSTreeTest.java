@@ -31,4 +31,30 @@ public class BSTreeTest {
     public void getInOrderValuesTest() throws Exception {
         Assertions.assertThat(tree.getInOrderValues()).isEqualTo(new Object[]{1, 4, 5, 10, 16, 17, 21});
     }
+
+    @Test
+    public void searchPositiveTest() throws Exception {
+        Assertions.assertThat(tree.search(1)).isTrue();
+        Assertions.assertThat(tree.search(4)).isTrue();
+        Assertions.assertThat(tree.search(5)).isTrue();
+        Assertions.assertThat(tree.search(10)).isTrue();
+        Assertions.assertThat(tree.search(16)).isTrue();
+        Assertions.assertThat(tree.search(17)).isTrue();
+        Assertions.assertThat(tree.search(21)).isTrue();
+    }
+
+    @Test
+    public void searchNegativeTest() throws Exception {
+        Assertions.assertThat(tree.search(22)).isFalse();
+        Assertions.assertThat(tree.search(0)).isFalse();
+        Assertions.assertThat(tree.search(14)).isFalse();
+        Assertions.assertThat(tree.search(18)).isFalse();
+        Assertions.assertThat(tree.search(-14)).isFalse();
+        Assertions.assertThat(tree.search(288)).isFalse();
+    }
+
+    @Test
+    public void singleSearchTest() throws Exception {
+        Assertions.assertThat(tree.search(22)).isFalse();
+    }
 }

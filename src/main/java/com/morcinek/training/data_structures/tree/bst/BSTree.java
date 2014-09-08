@@ -8,4 +8,6 @@ public interface BSTree<T extends Comparable<T>> {
     public void insert(T value);
 
     public Object[] getInOrderValues();
+
+    public boolean search(T value);
 }
