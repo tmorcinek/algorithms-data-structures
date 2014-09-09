@@ -228,4 +228,104 @@ public class BSTreeTest {
         Assertions.assertThat(tree.search(30)).isFalse();
         Assertions.assertThat(tree.toString()).isEmpty();
     }
+
+    @Test
+    public void deleteNoRightChildrenTest() throws Exception {
+        tree.insert(19);
+
+        Assertions.assertThat(tree.delete(21)).isEqualTo(21);
+        Assertions.assertThat(tree.search(21)).isFalse();
+        Assertions.assertThat(tree.toString()).isEqualTo(
+                "      19\n" +
+                        "   17\n" +
+                        "      16\n" +
+                        "10\n" +
+                        "      5\n" +
+                        "   4\n" +
+                        "      1\n");
+    }
+
+    @Test
+    public void deleteNoRightChildrenAdvancedTest() throws Exception {
+        tree.insert(19);
+        tree.insert(18);
+        tree.insert(20);
+
+        Assertions.assertThat(tree.delete(21)).isEqualTo(21);
+        Assertions.assertThat(tree.search(21)).isFalse();
+        Assertions.assertThat(tree.toString()).isEqualTo(
+                "         20\n" +
+                        "      19\n" +
+                        "         18\n" +
+                        "   17\n" +
+                        "      16\n" +
+                        "10\n" +
+                        "      5\n" +
+                        "   4\n" +
+                        "      1\n");
+    }
+
+    @Test
+    public void deleteNoRightChildrenAdvancedTest2() throws Exception {
+        tree.insert(19);
+        tree.insert(18);
+        tree.insert(20);
+
+        Assertions.assertThat(tree.delete(19)).isEqualTo(19);
+        Assertions.assertThat(tree.search(19)).isFalse();
+        Assertions.assertThat(tree.toString()).isEqualTo(
+                        "      21\n" +
+                        "         20\n" +
+                        "            18\n" +
+                        "   17\n" +
+                        "      16\n" +
+                        "10\n" +
+                        "      5\n" +
+                        "   4\n" +
+                        "      1\n");
+    }
+
+    @Test
+    public void deleteRightChildrenTest() throws Exception {
+        tree.insert(14);
+        tree.insert(11);
+        tree.insert(12);
+        tree.insert(13);
+
+        Assertions.assertThat(tree.delete(10)).isEqualTo(10);
+        Assertions.assertThat(tree.search(10)).isFalse();
+        Assertions.assertThat(tree.toString()).isEqualTo(
+                "      21\n" +
+                        "   17\n" +
+                        "      16\n" +
+                        "         14\n" +
+                        "               13\n" +
+                        "            12\n" +
+                        "11\n" +
+                        "      5\n" +
+                        "   4\n" +
+                        "      1\n");
+    }
+
+    @Test
+    public void deleteRightChildrenTest2() throws Exception {
+        tree.insert(14);
+        tree.insert(11);
+        tree.insert(12);
+        tree.insert(13);
+
+        Assertions.assertThat(tree.delete(11)).isEqualTo(11);
+        Assertions.assertThat(tree.search(11)).isFalse();
+        Assertions.assertThat(tree.toString()).isEqualTo(
+                "      21\n" +
+                        "   17\n" +
+                        "      16\n" +
+                        "         14\n" +
+                        "               13\n" +
+                        "            12\n" +
+                        "10\n" +
+                        "      5\n" +
+                        "   4\n" +
+                        "      1\n");
+    }
 }

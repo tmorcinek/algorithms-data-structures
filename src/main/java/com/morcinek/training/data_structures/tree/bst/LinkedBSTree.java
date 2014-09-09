@@ -186,7 +186,10 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
     }
 
     private BSTNode successorNode(T value) {
-        BSTNode node = searchNode(value, root);
+        return successorNode(searchNode(value, root));
+    }
+
+    private BSTNode successorNode(BSTNode node) {
         if (node.right != null) {
             return minimumNodeAfter(node.right);
         } else {
@@ -201,18 +204,44 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
     public T delete(T value) {
         BSTNode node = searchNode(value, root);
         if (node != null) {
-            if (node.right != null) {
-            } else if (node.left != null) {
+            BSTNode substituteNode = getSubstituteNode(node);
+            BSTNode childNode = getChildNode(substituteNode);
+            if (substituteNode.parent == null) {
+                root = childNode;
+            } else if (substituteNode == substituteNode.parent.left) {
+                substituteNode.parent.left = childNode;
             } else {
-                if (node.parent != null) {
-                    node.parent = null;
-                } else {
-                    root = null;
-                }
+                substituteNode.parent.right = childNode;
             }
-            return node.value;
+            if (substituteNode != node) {
+                node.value = substituteNode.value;
+            }
+            return value;
         } else {
             return null;
         }
+    }
+
+    private BSTNode getChildNode(BSTNode substituteNode) {
+        BSTNode childNode;
+        if (substituteNode.left != null) {
+            childNode = substituteNode.left;
+        } else {
+            childNode = substituteNode.right;
+        }
+        if (childNode != null) {
+            childNode.parent = substituteNode.parent;
+        }
+        return childNode;
+    }
+
+    private BSTNode getSubstituteNode(BSTNode node) {
+        BSTNode substitueNode;
+        if (node.left == null || node.right == null) {
+            substitueNode = node;
+        } else {
+            substitueNode = successorNode(node);
+        }
+        return substitueNode;
     }
 }
