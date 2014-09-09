@@ -82,40 +82,38 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
 
     @Override
     public T minimum() {
-        BSTNode node = root;
+        return minimumNodeAfter(root).value;
+    }
+
+    private BSTNode minimumNodeAfter(BSTNode node) {
         while (node.left != null) {
             node = node.left;
         }
-        return node.value;
+        return node;
     }
 
     @Override
     public T maximum() {
-        BSTNode node = root;
+        return maximumNodeAfter(root).value;
+    }
+
+    private BSTNode maximumNodeAfter(BSTNode node) {
         while (node.right != null) {
             node = node.right;
         }
-        return node.value;
+        return node;
     }
 
     @Override
     public T predecessor(T value) {
         BSTNode node = searchNode(value, root);
         if (node.left != null) {
-            node = node.left;
-            while (node.right != null) {
-                node = node.right;
-            }
-            return node.value;
+            return maximumNodeAfter(node.left).value;
         } else {
             while (node.parent != null && node.parent.right != node) {
                 node = node.parent;
             }
-            if (node.parent != null) {
-                return node.parent.value;
-            } else {
-                return null;
-            }
+            return parentNodeValue(node);
         }
     }
 
@@ -123,20 +121,20 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
     public T successor(T value) {
         BSTNode node = searchNode(value, root);
         if (node.right != null) {
-            node = node.right;
-            while (node.left != null) {
-                node = node.left;
-            }
-            return node.value;
+            return minimumNodeAfter(node.right).value;
         } else {
             while (node.parent != null && node.parent.left != node) {
                 node = node.parent;
             }
-            if (node.parent != null) {
-                return node.parent.value;
-            } else {
-                return null;
-            }
+            return parentNodeValue(node);
+        }
+    }
+
+    private T parentNodeValue(BSTNode node) {
+        if (node.parent != null) {
+            return node.parent.value;
+        } else {
+            return null;
         }
     }
 }
