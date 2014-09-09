@@ -218,4 +218,14 @@ public class BSTreeTest {
                         "      1\n"
         );
     }
+
+    @Test
+    public void deleteRootTest() throws Exception {
+        tree = new LinkedBSTree<Integer>();
+        tree.insert(30);
+
+        Assertions.assertThat(tree.delete(30)).isEqualTo(30);
+        Assertions.assertThat(tree.search(30)).isFalse();
+        Assertions.assertThat(tree.toString()).isEmpty();
+    }
 }

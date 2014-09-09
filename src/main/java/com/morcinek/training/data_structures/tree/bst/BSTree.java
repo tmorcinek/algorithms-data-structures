@@ -18,4 +18,6 @@ public interface BSTree<T extends Comparable<T>> {
     public T predecessor(T value);
 
     public T successor(T value);
+
+    public T delete(T value);
 }

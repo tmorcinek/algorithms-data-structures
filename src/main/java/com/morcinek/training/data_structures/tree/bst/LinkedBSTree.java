@@ -37,7 +37,10 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
 
     @Override
     public String toString() {
-        return root.toString();
+        if (root != null) {
+            return root.toString();
+        }
+        return "";
     }
 
     @Override
@@ -191,6 +194,25 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
                 node = node.parent;
             }
             return node.parent;
+        }
+    }
+
+    @Override
+    public T delete(T value) {
+        BSTNode node = searchNode(value, root);
+        if (node != null) {
+            if (node.right != null) {
+            } else if (node.left != null) {
+            } else {
+                if (node.parent != null) {
+                    node.parent = null;
+                } else {
+                    root = null;
+                }
+            }
+            return node.value;
+        } else {
+            return null;
         }
     }
 }
