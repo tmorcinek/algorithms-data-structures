@@ -83,4 +83,43 @@ public class BSTreeTest {
         tree.insert(157);
         Assertions.assertThat(tree.maximum()).isEqualTo(157);
     }
+
+    @Test
+    public void predecessorTest() throws Exception {
+        Assertions.assertThat(tree.predecessor(10)).isEqualTo(5);
+        Assertions.assertThat(tree.predecessor(17)).isEqualTo(16);
+        Assertions.assertThat(tree.predecessor(21)).isEqualTo(17);
+        Assertions.assertThat(tree.predecessor(4)).isEqualTo(1);
+    }
+
+    @Test
+    public void predecessorFromMinTest() throws Exception {
+        Assertions.assertThat(tree.predecessor(1)).isNull();
+    }
+
+    @Test
+    public void predecessorWithInsertionsTest() throws Exception {
+        tree.insert(9);
+        tree.insert(14);
+        tree.insert(15);
+        tree.insert(12);
+        tree.insert(13);
+        tree.insert(11);
+        tree.insert(12);
+        tree.insert(19);
+        tree.insert(20);
+        tree.insert(18);
+        tree.insert(75);
+        tree.insert(60);
+        tree.insert(125);
+
+        Assertions.assertThat(tree.predecessor(60)).isEqualTo(21);
+        Assertions.assertThat(tree.predecessor(125)).isEqualTo(75);
+        Assertions.assertThat(tree.predecessor(21)).isEqualTo(20);
+        Assertions.assertThat(tree.predecessor(17)).isEqualTo(16);
+        Assertions.assertThat(tree.predecessor(10)).isEqualTo(9);
+        Assertions.assertThat(tree.predecessor(13)).isEqualTo(12);
+        Assertions.assertThat(tree.predecessor(11)).isEqualTo(10);
+        Assertions.assertThat(tree.predecessor(9)).isEqualTo(5);
+    }
 }

@@ -64,20 +64,20 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
 
     @Override
     public boolean search(T value) {
-        return searchValue(value, root);
+        return searchNode(value, root) != null;
     }
 
-    private boolean searchValue(T value, BSTNode node) {
+    private BSTNode searchNode(T value, BSTNode node) {
         if (node != null) {
             if (value.compareTo(node.value) == 0) {
-                return true;
+                return node;
             } else if (value.compareTo(node.value) > 0) {
-                return searchValue(value, node.right);
+                return searchNode(value, node.right);
             } else {
-                return searchValue(value, node.left);
+                return searchNode(value, node.left);
             }
         }
-        return false;
+        return null;
     }
 
     @Override
@@ -96,5 +96,26 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
             node = node.right;
         }
         return node.value;
+    }
+
+    @Override
+    public T predecessor(T value) {
+        BSTNode node = searchNode(value, root);
+        if (node.left != null) {
+            node = node.left;
+            while (node.right != null) {
+                node = node.right;
+            }
+            return node.value;
+        } else {
+            while (node.parent != null && node.parent.right != node) {
+                node = node.parent;
+            }
+            if (node.parent != null) {
+                return node.parent.value;
+            } else {
+                return null;
+            }
+        }
     }
 }

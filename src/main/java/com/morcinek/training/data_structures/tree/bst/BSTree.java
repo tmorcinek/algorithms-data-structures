@@ -14,4 +14,6 @@ public interface BSTree<T extends Comparable<T>> {
     public T minimum();
 
     public T maximum();
+
+    public T predecessor(T value);
 }
