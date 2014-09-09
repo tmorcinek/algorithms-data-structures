@@ -122,4 +122,47 @@ public class BSTreeTest {
         Assertions.assertThat(tree.predecessor(11)).isEqualTo(10);
         Assertions.assertThat(tree.predecessor(9)).isEqualTo(5);
     }
+
+    @Test
+    public void successorTest() throws Exception {
+        Assertions.assertThat(tree.successor(10)).isEqualTo(16);
+        Assertions.assertThat(tree.successor(16)).isEqualTo(17);
+        Assertions.assertThat(tree.successor(17)).isEqualTo(21);
+        Assertions.assertThat(tree.successor(1)).isEqualTo(4);
+        Assertions.assertThat(tree.successor(4)).isEqualTo(5);
+    }
+
+    @Test
+    public void successorFromMaxTest() throws Exception {
+        Assertions.assertThat(tree.successor(21)).isNull();
+    }
+
+    @Test
+    public void successorWithInsertionsTest() throws Exception {
+        tree.insert(9);
+        tree.insert(14);
+        tree.insert(15);
+        tree.insert(12);
+        tree.insert(13);
+        tree.insert(11);
+        tree.insert(12);
+        tree.insert(19);
+        tree.insert(20);
+        tree.insert(18);
+        tree.insert(75);
+        tree.insert(60);
+        tree.insert(125);
+
+        Assertions.assertThat(tree.successor(60)).isEqualTo(75);
+        Assertions.assertThat(tree.successor(125)).isNull();
+        Assertions.assertThat(tree.successor(21)).isEqualTo(60);
+        Assertions.assertThat(tree.successor(17)).isEqualTo(18);
+        Assertions.assertThat(tree.successor(10)).isEqualTo(11);
+        Assertions.assertThat(tree.successor(12)).isEqualTo(13);
+        Assertions.assertThat(tree.successor(11)).isEqualTo(12);
+        Assertions.assertThat(tree.successor(9)).isEqualTo(10);
+        Assertions.assertThat(tree.successor(13)).isEqualTo(14);
+        Assertions.assertThat(tree.successor(15)).isEqualTo(16);
+        Assertions.assertThat(tree.successor(20)).isEqualTo(21);
+    }
 }
