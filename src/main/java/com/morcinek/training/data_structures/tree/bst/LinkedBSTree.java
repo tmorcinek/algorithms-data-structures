@@ -42,11 +42,12 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
 
     @Override
     public void insert(T value) {
-        if (root == null) {
-            root = new BSTNode(null, value);
-        } else {
-            insertNode(root, value);
-        }
+//        if (root == null) {
+//            root = new BSTNode(null, value);
+//        } else {
+//            insertNode(root, value);
+//        }
+        iterativeInsertNode(root, value);
     }
 
     public void insertNode(BSTNode node, T value) {
@@ -62,6 +63,28 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
             } else {
                 node.right = new BSTNode(node, value);
             }
+        }
+    }
+
+    public void iterativeInsertNode(BSTNode node, T value) {
+        BSTNode parent = null;
+        while (node != null) {
+            parent = node;
+            if (value.compareTo(node.value) <= 0) {
+                node = node.left;
+            } else {
+                node = node.right;
+            }
+        }
+        node = new BSTNode(parent, value);
+        if (parent != null) {
+            if (value.compareTo(parent.value) <= 0) {
+                parent.left = node;
+            } else {
+                parent.right = node;
+            }
+        } else {
+            root = node;
         }
     }
 
