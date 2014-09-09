@@ -165,4 +165,57 @@ public class BSTreeTest {
         Assertions.assertThat(tree.successor(15)).isEqualTo(16);
         Assertions.assertThat(tree.successor(20)).isEqualTo(21);
     }
+
+    @Test
+    public void printTreeTest() throws Exception {
+        Assertions.assertThat(tree.toString()).isNotEmpty().isEqualTo(
+                "      21\n" +
+                        "   17\n" +
+                        "      16\n" +
+                        "10\n" +
+                        "      5\n" +
+                        "   4\n" +
+                        "      1\n"
+        );
+    }
+
+    @Test
+    public void printTreeWithInsertionsTest() throws Exception {
+        tree.insert(9);
+        tree.insert(14);
+        tree.insert(15);
+        tree.insert(12);
+        tree.insert(13);
+        tree.insert(11);
+        tree.insert(12);
+        tree.insert(19);
+        tree.insert(20);
+        tree.insert(18);
+        tree.insert(75);
+        tree.insert(60);
+        tree.insert(125);
+
+        Assertions.assertThat(tree.toString()).isNotEmpty().isEqualTo(
+                "            125\n" +
+                        "         75\n" +
+                        "            60\n" +
+                        "      21\n" +
+                        "            20\n" +
+                        "         19\n" +
+                        "            18\n" +
+                        "   17\n" +
+                        "      16\n" +
+                        "            15\n" +
+                        "         14\n" +
+                        "               13\n" +
+                        "            12\n" +
+                        "                  12\n" +
+                        "               11\n" +
+                        "10\n" +
+                        "         9\n" +
+                        "      5\n" +
+                        "   4\n" +
+                        "      1\n"
+        );
+    }
 }

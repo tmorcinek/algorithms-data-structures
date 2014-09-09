@@ -2,13 +2,14 @@ package com.morcinek.training.data_structures.tree.bst;
 
 import com.morcinek.training.data_structures.list.ArrayList;
 import com.morcinek.training.data_structures.list.List;
+import com.morcinek.training.data_structures.tree.utils.StringHelper;
 
 /**
  * Copyright 2014 Tomasz Morcinek. All rights reserved.
  */
 public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
 
-    private class BSTNode {
+    private class BSTNode implements StringHelper.Printable {
         T value;
         BSTNode left;
         BSTNode right;
@@ -18,9 +19,26 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
             this.parent = parent;
             this.value = value;
         }
+
+        @Override
+        public String toString() {
+            return toString(0);
+        }
+
+        @Override
+        public String toString(int level) {
+            return StringHelper.printChild(right, level)
+                    + StringHelper.printValue(value, level)
+                    + StringHelper.printChild(left, level);
+        }
     }
 
     private BSTNode root;
+
+    @Override
+    public String toString() {
+        return root.toString();
+    }
 
     @Override
     public void insert(T value) {
@@ -124,7 +142,7 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
         return getNodeValue(predecessorNode(value));
     }
 
-    private BSTNode predecessorNode(T value){
+    private BSTNode predecessorNode(T value) {
         BSTNode node = searchNode(value, root);
         if (node.left != null) {
             return maximumNodeAfter(node.left);
@@ -136,13 +154,12 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
         }
     }
 
-
     @Override
     public T successor(T value) {
         return getNodeValue(successorNode(value));
     }
 
-    private BSTNode successorNode(T value){
+    private BSTNode successorNode(T value) {
         BSTNode node = searchNode(value, root);
         if (node.right != null) {
             return minimumNodeAfter(node.right);
