@@ -112,37 +112,45 @@ public class LinkedBSTree<T extends Comparable<T>> implements BSTree<T> {
         return node;
     }
 
+    private T getNodeValue(BSTNode node) {
+        if (node != null) {
+            return node.value;
+        }
+        return null;
+    }
+
     @Override
     public T predecessor(T value) {
+        return getNodeValue(predecessorNode(value));
+    }
+
+    private BSTNode predecessorNode(T value){
         BSTNode node = searchNode(value, root);
         if (node.left != null) {
-            return maximumNodeAfter(node.left).value;
+            return maximumNodeAfter(node.left);
         } else {
             while (node.parent != null && node.parent.right != node) {
                 node = node.parent;
             }
-            return parentNodeValue(node);
+            return node.parent;
         }
     }
 
+
     @Override
     public T successor(T value) {
+        return getNodeValue(successorNode(value));
+    }
+
+    private BSTNode successorNode(T value){
         BSTNode node = searchNode(value, root);
         if (node.right != null) {
-            return minimumNodeAfter(node.right).value;
+            return minimumNodeAfter(node.right);
         } else {
             while (node.parent != null && node.parent.left != node) {
                 node = node.parent;
             }
-            return parentNodeValue(node);
-        }
-    }
-
-    private T parentNodeValue(BSTNode node) {
-        if (node.parent != null) {
-            return node.parent.value;
-        } else {
-            return null;
+            return node.parent;
         }
     }
 }
